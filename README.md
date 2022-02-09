@@ -50,7 +50,7 @@ The latest version of this theme is on the master branch, and it supports conky 
 - Download and install [headsetcontrol](https://github.com/Sapd/HeadsetControl).
 - [Nerd Fonts](https://www.nerdfonts.com/)
 
-  ```
+  ```shell
   > sudo aptitude install conky-all curl net-tools lm-sensors hddtemp git
   ```
 
@@ -60,7 +60,7 @@ The latest version of this theme is on the master branch, and it supports conky 
 
 - Manually download the repo and place the files in their respective directories or you can use the following commands:
 
-  ```
+  ```shell
   > mkdir ~/.config/conky
   > mkdir ~/tmp && cd ~/tmp
   > git clone https://github.com/MatiasPujado/Conky-On-Debian.git
@@ -82,7 +82,7 @@ The latest version of this theme is on the master branch, and it supports conky 
 
 - `.conkyrc_time-hs`: If you do not own a compatible device with **Headsetcontrol**, feel free to delete the last line from `conky.text` module.
 
-```
+```lua
  > ${alignc}${voffset 6}${execp $HOME/.config/conky/hs_battery-status.bash}
 ```
 
@@ -91,7 +91,7 @@ The latest version of this theme is on the master branch, and it supports conky 
 > - Replace `enp4s0` string for the name of your Ethernet connection.
 > - Use the following command to find out:
 
-```
+```shell
 > ip a
 ```
 
