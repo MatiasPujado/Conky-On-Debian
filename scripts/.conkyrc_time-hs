@@ -1,0 +1,72 @@
+--[[
+Conky Version: conky 1.11.6 compiled 2020-08-17 for Linux x86_64
+Author: Matias Pujado
+Created: 01/02/2022
+Last Modified: 08/02/2022
+Version: 1.0
+Description: Displays the time and day of the week with current Wireless Headset's batttery status.
+]]
+
+conky.config = {
+    -- ----------------------------------Windows Settings
+        own_window = true,
+        own_window_class = 'Conky',
+        own_window_type = 'desktop',
+        own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager',
+
+        own_window_transparent = true,
+        own_window_argb_visual = true,
+
+        background = false,
+        double_buffer = true,
+    -- ----------------------------------Position
+        alignment = 'bottom_middle',
+
+        gap_x = 0,
+        gap_y = 150,
+
+        minimum_height = 5,
+        minimum_width = 5,
+    -- ----------------------------------Font
+        draw_borders = false,
+        draw_graph_borders = false,
+        draw_outline = false,
+        draw_shades = false,
+
+        font = 'B612:size=15',
+
+        uppercase = false,
+        use_spacer = 'none',
+
+        text_buffer_size = 2048,
+        use_xft = true,
+        override_utf8_locale = true,
+    -- ----------------------------------Other
+        net_avg_samples = 2,
+        no_buffers = true,
+        out_to_console = false,
+        out_to_stderr = false,
+        extra_newline = false,
+
+        stippled_borders = 0,
+        update_interval = 1.0,
+
+
+        color0 = 'e2fcb1', -- Light Green
+        color1 = '86ab49', -- Dark Green
+        color2 = '00380f', -- Battery fully charged [Dark Green-2]
+        color3 = '009628', -- Battery draining (90% - 60%) [Green]
+        color4 = 'c7c000', -- Battery draining (50% - 40%) [Yellow]
+        color5 = 'fa8100', -- Battery draining (30% - 20%) [Orange]
+        color6 = 'f20000', -- Battery draining (10% - 0%) [Red]
+        color7 = '999999', -- Light Gray
+        color8 = '404040', -- Dark Gray
+        color9 = '00dbb7', -- Charging color
+    }
+
+    conky.text = [[
+    ${alignc}${font B612:pixelsize=100}${color1}${time %H:%M}${font}
+    ${alignc}${voffset 10}${font B612:pixelsize=25}${color0}${time  %B %d, %Y}${font}
+    ${alignc}${voffset 4}${font B612:pixelsize=19}${color0}${time %A}${font}
+    ${alignc}${voffset 6}${execp $HOME/.config/conky/hs_battery-status.bash}
+    ]]

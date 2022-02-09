@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Conky_PCStatus
+Exec=conky --daemonize --pause=5 -c $HOME/.config/conky/.conkyrc_pcstatus
+StartupNotify=false
+Terminal=false
+Icon=conky-logomark-violet
+X-GNOME-Autostart-enabled=true
+X-KDE-SubstituteUID=false

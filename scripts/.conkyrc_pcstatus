@@ -1,0 +1,102 @@
+--[[
+Conky Version: conky 1.11.6 compiled 2020-08-17 for Linux x86_64
+Author: Matias Pujado
+Created: 01/02/2022
+Last Modified: 08/02/2022
+Version: 1.0
+Description: Displays system's current status.
+]]
+
+conky.config = {
+    -- ----------------------------------Windows Settings
+        own_window = true,
+        own_window_class = 'Conky',
+        own_window_type = 'desktop',
+        own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager',
+
+        own_window_transparent = true,
+        own_window_argb_visual = true,
+
+        background = false,
+        double_buffer = true,
+    -- ----------------------------------Position
+        alignment = 'top_right',
+
+        gap_x = 8,
+        gap_y = 26,
+
+        minimum_height = 25,
+        minimum_width = 25,
+    -- ----------------------------------Font
+        draw_borders = false,
+        draw_graph_borders = false,
+        draw_outline = false,
+        draw_shades = false,
+
+        font = 'B612:size=10',
+
+        uppercase = false,
+        use_spacer = 'none',
+
+        text_buffer_size = 2048,
+        use_xft = true,
+        override_utf8_locale = true,
+    -- ----------------------------------Other
+        net_avg_samples = 2,
+        no_buffers = true,
+        out_to_console = false,
+        out_to_stderr = false,
+        extra_newline = false,
+
+        stippled_borders = 0,
+        update_interval = 1.0,
+
+        color0 = 'e2fcb1', -- Light Green
+        color1 = '86ab49', -- Dark Green
+        color2 = '039c00'; -- Internet ON
+        color3 = '404040', -- Internet OFF
+        color4 = 'a30800', -- Red
+
+        github_token = 'YOUR-TOKEN',
+    }
+
+    conky.text = [[
+    ${offset 30}${color0}${font 3270Narrow Nerd Font:pixelsize=24}${font} ${github_notifications} ${alignr}${font 3270Narrow Nerd Font:pixelsize=14}${font} ${uptime}
+    ${voffset -14}${color1}${font 3270Narrow Nerd Font:pixelsize=24}ﲾ${font} ${color0}${hr 2}
+    ${voffset 4}${color0}System: ${alignr}${color1}${font 3270Narrow Nerd Font:pixelsize=22}${font}${color0} ${exec uname -o} - ${nodename}
+    ${voffset 4}${color0}Kernel: ${alignr}${kernel}
+    
+    CPU: ${cpu cpu0}%  ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec sensors | grep Tctl | grep -Eo '[0-9]{2,}' | head -n 1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font}${color0}${alignr}Freq: ${freq_g}GHz
+    ${voffset 6}AMD-GPU  ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec sensors | grep junction | grep -Eo '[0-9]{2,}' | head -n 1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font}${color0}${alignr}Fan: ${exec sensors | grep fan1 | grep -Eo '[0-9]{2,}' | head -n 1} RPM
+    ${voffset 6}RAM: ${memmax}${alignr}Free: ${memeasyfree}
+    ${voffset 6}Cached: ${cached}${alignr}Buffer: ${buffers}
+    ${voffset 6}Dirty Memory: ${memdirty}${alignr}RAM used: ${memperc}%
+    ${voffset 6}SWAP used: ${swapperc}% ${alignr}Free: ${swapfree}
+    ${voffset 4}${color1}${font 3270Narrow Nerd Font:pixelsize=24}${font} ${color0}${hr 2}
+    ${voffset 2}${top name 1}${alignr} ${top pid 1} ${top cpu 1}%
+    ${voffset 4}${top name 2}${alignr} ${top pid 2} ${top cpu 2}%
+    ${voffset 4}${top name 3}${alignr} ${top pid 3} ${top cpu 3}%
+    ${voffset 4}${color1}${font 3270Narrow Nerd Font:pixelsize=24}${font} ${color0}${hr 2}
+    ${voffset 2}${top_mem name 1}${alignr} ${top_mem pid 1} ${top_mem mem 1}%
+    ${voffset 4}${top_mem name 2}${alignr} ${top_mem pid 2} ${top_mem mem 2}%
+    ${voffset 4}${top_mem name 3}${alignr} ${top_mem pid 3} ${top_mem mem 3}%
+    ${voffset 6}${color1}${font 3270Narrow Nerd Font:pixelsize=24}${font} ${color0}${hr 2}
+    ${voffset 2}${color1}${font 3270Narrow Nerd Font:pixelsize=20}${font} ${color0}Root ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec sensors | grep Composite | grep -Eo '[0-9]{2,}' | head -n 1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font} ${color0}${stippled_hr 1}
+    ${voffset 4}${fs_used /}/${fs_size /} ${alignr}${fs_free /} Free ${fs_bar 8,60 /}
+    ${voffset 2}${color1}${font 3270Narrow Nerd Font:pixelsize=20}${font} ${color0}Home ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec sensors | grep Composite | grep -Eo '[0-9]{2,}' | head -n 1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font} ${color0}${stippled_hr 1}
+    ${voffset 4}${fs_used /home}/${fs_size /home} ${alignr}${fs_free /home} Free ${fs_bar 8,60 /home}
+    ${voffset 2}${color1}${font 3270Narrow Nerd Font:pixelsize=20}${font} ${color0}MediaCenter  ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec hddtemp -qn /dev/sda1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font} ${color0}${stippled_hr 1}
+    ${voffset 4}${fs_used /media/MediaCenter}/${fs_size /media/MediaCenter} ${alignr}${fs_free /media/MediaCenter} Free ${fs_bar 8,60 /media/MediaCenter}
+    ${voffset 2}${color1}${font 3270Narrow Nerd Font:pixelsize=20}${font} ${color0}Vault ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec hddtemp -qn /dev/sdc1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font} ${color0}${stippled_hr 1}
+    ${voffset 4}${fs_used /media/Vault}/${fs_size /media/Vault} ${alignr}${fs_free /media/Vault} Free ${fs_bar 8,60 /media/Vault}
+    ${voffset 2}${color1}${font 3270Narrow Nerd Font:pixelsize=20}${font} ${color0}VMs ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec hddtemp -qn /dev/sdb1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font} ${color0}${stippled_hr 1}
+    ${voffset 4}${fs_used /media/VMs}/${fs_size /media/VMs} ${alignr}${fs_free /media/VMs} Free ${fs_bar 8,60 /media/VMs}
+    ${voffset 2}${color1}${font 3270Narrow Nerd Font:pixelsize=20}${font} ${color0}Games ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec hddtemp -qn /dev/sdd1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font} ${color0}${stippled_hr 1}
+    ${voffset 4}${fs_used /media/Games}/${fs_size /media/Games} ${alignr}${fs_free /media/Games} Free ${fs_bar 8,60 /media/Games}
+    ${voffset 6}${execp $HOME/.config/conky/net_status.bash}
+    ${voffset 4}LAN IPv4: ${alignr}${addr enp4s0}
+    ${voffset 4}LAN IPv6: ${alignr}${exec ip addr show dev enp4s0 | sed -e's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d' | tail -n 1}
+    ${voffset 4}WLAN IPv4: ${alignr}${exec curl ipinfo.io/ip}
+    ${voffset 4}WLAN IPv6: ${alignr}${font B612:pixelsize=11}${exec ip addr show dev enp4s0 | sed -e's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d' | head -n 1}${font}
+
+    ]]

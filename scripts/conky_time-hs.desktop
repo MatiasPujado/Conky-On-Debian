@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Conky_Time-HS
+Exec=conky --daemonize --pause=5 -c $HOME/.config/conky/.conkyrc_time-hs
+StartupNotify=false
+Terminal=false
+Icon=conky-logomark-violet
+X-GNOME-Autostart-enabled=true
+X-KDE-SubstituteUID=false
