@@ -91,8 +91,10 @@ conky.config = {
     ${voffset 4}${fs_used /media/Vault}/${fs_size /media/Vault} ${alignr}${fs_free /media/Vault} Free ${fs_bar 8,60 /media/Vault}
     ${voffset 2}${color1}${font 3270Narrow Nerd Font:pixelsize=20}${font} ${color0}VMs ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec hddtemp -qn /dev/sdb1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font} ${color0}${stippled_hr 1}
     ${voffset 4}${fs_used /media/VMs}/${fs_size /media/VMs} ${alignr}${fs_free /media/VMs} Free ${fs_bar 8,60 /media/VMs}
-    ${voffset 2}${color1}${font 3270Narrow Nerd Font:pixelsize=20}${font} ${color0}Games ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec hddtemp -qn /dev/sdd1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font} ${color0}${stippled_hr 1}
+    ${voffset 2}${color1}${font 3270Narrow Nerd Font:pixelsize=20}${font} ${color0}Games ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec sensors | grep Composite | grep -Eo '[0-9]{2,}' | head -n 1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font} ${color0}${stippled_hr 1}
     ${voffset 4}${fs_used /media/Games}/${fs_size /media/Games} ${alignr}${fs_free /media/Games} Free ${fs_bar 8,60 /media/Games}
+    ${voffset 2}${color1}${font 3270Narrow Nerd Font:pixelsize=20}${font} ${color0}Work ${color1}${font 3270Narrow Nerd Font:pixelsize=16}${font} ${exec hddtemp -qn /dev/sdd1}${color1}${font 3270Narrow Nerd Font:pixelsize=16}糖${font} ${color0}${stippled_hr 1}
+    ${voffset 4}${fs_used /media/Work}/${fs_size /media/Work} ${alignr}${fs_free /media/Work} Free ${fs_bar 8,60 /media/Work}
     ${voffset 6}${execp $HOME/.config/conky/net_status.bash}
     ${voffset 4}LAN IPv4: ${alignr}${addr enp4s0}
     ${voffset 4}LAN IPv6: ${alignr}${exec ip addr show dev enp4s0 | sed -e's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d' | tail -n 1}
