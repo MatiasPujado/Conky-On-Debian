@@ -68,5 +68,5 @@ conky.config = {
     ${alignc}${font B612:pixelsize=100}${color1}${time %H:%M}${font}
     ${alignc}${voffset 10}${font B612:pixelsize=25}${color0}${time  %B %d, %Y}${font}
     ${alignc}${voffset 4}${font B612:pixelsize=19}${color0}${time %A}${font}
-    ${alignc}${voffset 6}${execp $HOME/.config/conky/hs_battery-status.bash}
+    ${alignc}${voffset 6}${offset 16}${execp $HOME/.config/conky/hs_battery-status.bash}
     ]]
